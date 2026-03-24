@@ -1,11 +1,12 @@
 {
   "manifest_version": 3,
   "name": "LinkedIn AI Commenter",
-  "version": "1.0.0",
-  "description": "Generate high-quality, context-aware comments on LinkedIn posts instantly using AI.",
+  "version": "3.0.0",
+  "description": "Select any text on LinkedIn → get an AI-generated comment instantly. Works independently of LinkedIn's DOM.",
   "permissions": [
     "storage",
-    "activeTab"
+    "activeTab",
+    "clipboardWrite"
   ],
   "host_permissions": [
     "https://www.linkedin.com/*",

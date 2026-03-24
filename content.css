@@ -1,244 +1,89 @@
-/* LinkedIn AI Commenter — Injected Styles */
+/*
+ * LinkedIn AI Commenter v3 — content.css
+ *
+ * This file contains ONLY the foundational styles that cannot be expressed
+ * reliably via inline JS (keyframe animations, scrollbar theming, resets).
+ * All component layout & color is handled inline in content.js so the
+ * extension stays fully independent of LinkedIn's stylesheet cascade.
+ */
 
-/* ── Toolbar container ─────────────────────────────────── */
-.laic-toolbar {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 10px 12px 6px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  background: transparent;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+/* ── Keyframe library ─────────────────────────────────────────────────────── */
+
+@keyframes laic-pop-in {
+  0%   { opacity: 0; transform: scale(0.7) translateY(4px); }
+  70%  { transform: scale(1.05) translateY(-1px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* ── Buttons base ──────────────────────────────────────── */
-.laic-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 14px;
-  border-radius: 16px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1.5px solid transparent;
-  transition: background 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
-  line-height: 1.4;
-  white-space: nowrap;
+@keyframes laic-pop-out {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.75) translateY(4px); }
 }
 
-.laic-btn:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-/* Primary generate button */
-.laic-btn-primary {
-  background: #0a66c2;
-  color: #fff;
-  border-color: #0a66c2;
-  align-self: flex-start;
-}
-
-.laic-btn-primary:hover:not(:disabled) {
-  background: #004182;
-  border-color: #004182;
-  box-shadow: 0 2px 8px rgba(10, 102, 194, 0.35);
-}
-
-/* Ghost / secondary */
-.laic-btn-ghost {
-  background: transparent;
-  color: #0a66c2;
-  border-color: #0a66c2;
-}
-
-.laic-btn-ghost:hover:not(:disabled) {
-  background: rgba(10, 102, 194, 0.08);
-  box-shadow: inset 0 0 0 1px #0a66c2;
-}
-
-/* Insert / confirm */
-.laic-btn-insert {
-  background: #057642;
-  color: #fff;
-  border-color: #057642;
-}
-
-.laic-btn-insert:hover:not(:disabled) {
-  background: #046236;
-  box-shadow: 0 2px 8px rgba(5, 118, 66, 0.35);
-}
-
-/* Improve mine */
-.laic-btn-improve {
-  color: #7a3e00;
-  border-color: #c57e1a;
-}
-
-.laic-btn-improve:hover:not(:disabled) {
-  background: rgba(197, 126, 26, 0.1);
-}
-
-/* ── Tone row ──────────────────────────────────────────── */
-.laic-tone-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.laic-tone-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  border: 1.5px solid #c0c0c0;
-  color: #555;
-  background: transparent;
-  transition: all 0.15s ease;
-  font-family: inherit;
-  white-space: nowrap;
-}
-
-.laic-tone-btn:hover {
-  border-color: #0a66c2;
-  color: #0a66c2;
-  background: rgba(10, 102, 194, 0.06);
-}
-
-.laic-tone-btn.active {
-  border-color: #0a66c2;
-  background: rgba(10, 102, 194, 0.1);
-  color: #0a66c2;
-  font-weight: 600;
-}
-
-/* ── Result preview ────────────────────────────────────── */
-.laic-preview {
-  background: #f3f8ff;
-  border: 1.5px solid #b3d0f5;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 14px;
-  color: #1a1a1a;
-  line-height: 1.5;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.laic-preview.hidden {
-  display: none;
-}
-
-.laic-preview.laic-error {
-  background: #fff3f0;
-  border-color: #f5c6b8;
-  color: #c0392b;
-  font-size: 13px;
-}
-
-.laic-result-text {
-  font-size: 14px;
-  line-height: 1.55;
-  color: #1a1a1a;
-}
-
-.laic-result-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-/* ── Button icon & spinner ─────────────────────────────── */
-.laic-btn-icon {
-  font-size: 11px;
-  opacity: 0.85;
+@keyframes laic-panel-in {
+  0%   { opacity: 0; transform: scale(0.94) translateY(-6px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 @keyframes laic-spin {
   to { transform: rotate(360deg); }
 }
 
+@keyframes laic-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes laic-pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(10, 102, 194, 0.45); }
+  70%  { box-shadow: 0 0 0 8px rgba(10, 102, 194, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(10, 102, 194, 0); }
+}
+
+@keyframes laic-result-in {
+  0%   { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Class hooks ─────────────────────────────────────────────────────────── */
+
+.laic-pop-in  { animation: laic-pop-in  0.22s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.laic-pop-out { animation: laic-pop-out 0.15s ease-in forwards; }
+.laic-panel-in { animation: laic-panel-in 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.laic-result-in { animation: laic-result-in 0.18s ease forwards; }
+
 .laic-spinner {
   display: inline-block;
-  width: 12px;
-  height: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-top-color: #fff;
   border-radius: 50%;
-  animation: laic-spin 0.7s linear infinite;
+  animation: laic-spin 0.6s linear infinite;
+  flex-shrink: 0;
 }
 
-/* ── API key notice toast ──────────────────────────────── */
-.laic-api-notice {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 99999;
-  background: #1a1a2e;
-  color: #e8e8e8;
-  padding: 14px 18px;
-  border-radius: 10px;
-  font-size: 13px;
-  line-height: 1.5;
-  max-width: 300px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  animation: laic-slide-in 0.3s ease;
+.laic-spinner-blue {
+  border-color: rgba(10, 102, 194, 0.2);
+  border-top-color: #0a66c2;
 }
 
-.laic-api-notice strong {
-  display: block;
-  color: #7eb3f7;
-  margin-bottom: 4px;
-  font-size: 14px;
+/* Scrollbar for result text area */
+.laic-result-scroll::-webkit-scrollbar { width: 3px; }
+.laic-result-scroll::-webkit-scrollbar-track { background: transparent; }
+.laic-result-scroll::-webkit-scrollbar-thumb {
+  background: rgba(10, 102, 194, 0.25);
+  border-radius: 99px;
 }
 
-.laic-notice-close {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  background: none;
-  border: none;
-  color: #aaa;
-  font-size: 18px;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
+/* Shimmer loading text */
+.laic-shimmer {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 200% auto;
+  animation: laic-shimmer 1.4s linear infinite;
+  border-radius: 4px;
+  color: transparent !important;
+  user-select: none;
 }
 
-.laic-notice-close:hover { color: #fff; }
-
-@keyframes laic-slide-in {
-  from { transform: translateY(16px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .laic-preview {
-    background: #1c2a3a;
-    border-color: #2d4a6e;
-    color: #d8e8f8;
-  }
-
-  .laic-result-text {
-    color: #d8e8f8;
-  }
-
-  .laic-tone-btn {
-    border-color: #555;
-    color: #aaa;
-  }
-
-  .laic-tone-btn.active,
-  .laic-tone-btn:hover {
-    border-color: #5b9bd5;
-    color: #7eb3f7;
-    background: rgba(91, 155, 213, 0.12);
-  }
-}
+/* Pulse ring on trigger button */
+.laic-pulse { animation: laic-pulse-ring 1.8s ease-out infinite; }

@@ -15,7 +15,6 @@
       --surface2: #1f2937;
       --border: rgba(255,255,255,0.08);
       --accent: #4f9cf9;
-      --accent-dim: rgba(79, 156, 249, 0.12);
       --green: #3fb950;
       --red: #f85149;
       --text: #e6edf3;
@@ -30,263 +29,136 @@
       color: var(--text);
       font-family: var(--font);
       font-size: 14px;
-      padding: 0;
       overflow: hidden;
     }
 
-    /* Header */
     .header {
       padding: 20px 20px 16px;
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-
     .header::before {
       content: '';
-      position: absolute;
-      top: -30px; right: -30px;
+      position: absolute; top: -30px; right: -30px;
       width: 120px; height: 120px;
       background: radial-gradient(circle, rgba(79,156,249,0.15) 0%, transparent 70%);
       pointer-events: none;
     }
 
-    .logo-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 4px;
-    }
-
+    .logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
     .logo-icon {
       width: 32px; height: 32px;
       background: linear-gradient(135deg, #0a66c2, #4f9cf9);
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
-      box-shadow: 0 2px 12px rgba(79, 156, 249, 0.3);
+      font-size: 16px; flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(79,156,249,0.3);
     }
-
-    .logo-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.3px;
-    }
-
+    .logo-name { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; }
     .logo-name span { color: var(--accent); }
+    .tagline { font-size: 12px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
 
-    .tagline {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 2px;
-      line-height: 1.4;
+    .version-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 10px; padding: 3px 9px;
+      border-radius: 20px; font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.3px;
+      background: rgba(79,156,249,0.12); color: var(--accent);
+      border: 1px solid rgba(79,156,249,0.25);
     }
 
-    /* Status badge */
     .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 10px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 6px; padding: 4px 10px;
+      border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
       transition: all 0.2s;
     }
+    .status-badge.connected { background: rgba(63,185,80,0.12); color: var(--green); border: 1px solid rgba(63,185,80,0.25); }
+    .status-badge.disconnected { background: rgba(248,81,73,0.1); color: var(--red); border: 1px solid rgba(248,81,73,0.2); }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
-    .status-badge.connected {
-      background: rgba(63, 185, 80, 0.12);
-      color: var(--green);
-      border: 1px solid rgba(63, 185, 80, 0.25);
-    }
-
-    .status-badge.disconnected {
-      background: rgba(248, 81, 73, 0.1);
-      color: var(--red);
-      border: 1px solid rgba(248, 81, 73, 0.2);
-    }
-
-    .status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: currentColor;
-    }
-
-    /* Body */
     .body { padding: 18px 20px 20px; }
 
-    /* Section */
     .section { margin-bottom: 20px; }
-
     .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 8px;
     }
 
-    /* Input group */
-    .input-group {
-      position: relative;
-    }
-
+    .input-group { position: relative; }
     .input-group input {
-      width: 100%;
-      padding: 10px 40px 10px 12px;
-      background: var(--surface2);
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      color: var(--text);
-      font-family: var(--mono);
-      font-size: 12.5px;
-      outline: none;
+      width: 100%; padding: 10px 40px 10px 12px;
+      background: var(--surface2); border: 1.5px solid var(--border);
+      border-radius: 8px; color: var(--text);
+      font-family: var(--mono); font-size: 12.5px; outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-
     .input-group input::placeholder { color: var(--text-muted); opacity: 0.6; }
-
-    .input-group input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(79, 156, 249, 0.12);
-    }
-
+    .input-group input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,156,249,0.12); }
     .input-group input.valid { border-color: var(--green); }
     .input-group input.invalid { border-color: var(--red); }
 
     .toggle-visibility {
-      position: absolute;
-      right: 10px; top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 2px;
-      font-size: 15px;
-      line-height: 1;
-      transition: color 0.2s;
+      position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: var(--text-muted);
+      cursor: pointer; padding: 2px; font-size: 15px; transition: color 0.2s;
     }
-
     .toggle-visibility:hover { color: var(--text); }
 
-    .input-hint {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 6px;
-      line-height: 1.4;
-    }
-
-    .input-hint a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
+    .input-hint { font-size: 11px; color: var(--text-muted); margin-top: 6px; line-height: 1.4; }
+    .input-hint a { color: var(--accent); text-decoration: none; }
     .input-hint a:hover { text-decoration: underline; }
 
-    /* Save button */
     .btn-save {
-      width: 100%;
-      padding: 10px;
+      width: 100%; padding: 10px;
       background: linear-gradient(135deg, #0a66c2, #4f9cf9);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-family: var(--font);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
-      margin-top: 12px;
-      box-shadow: 0 2px 12px rgba(79, 156, 249, 0.25);
+      color: #fff; border: none; border-radius: 8px;
+      font-family: var(--font); font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 12px; box-shadow: 0 2px 12px rgba(79,156,249,0.25);
     }
-
-    .btn-save:hover { opacity: 0.9; box-shadow: 0 4px 20px rgba(79, 156, 249, 0.4); }
+    .btn-save:hover { opacity: 0.9; box-shadow: 0 4px 20px rgba(79,156,249,0.4); }
     .btn-save:active { transform: scale(0.98); }
+    .btn-save.saved { background: linear-gradient(135deg, #057642, #3fb950); }
 
-    .btn-save.saved {
-      background: linear-gradient(135deg, #057642, #3fb950);
-      box-shadow: 0 2px 12px rgba(63, 185, 80, 0.3);
+    .divider { height: 1px; background: var(--border); margin: 18px 0; }
+
+    /* How-it-works steps */
+    .how-it-works { display: flex; flex-direction: column; gap: 10px; }
+    .step {
+      display: flex; align-items: flex-start; gap: 10px;
     }
-
-    /* Divider */
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 18px 0;
+    .step-num {
+      width: 20px; height: 20px; flex-shrink: 0;
+      border-radius: 50%; background: rgba(79,156,249,0.15);
+      border: 1px solid rgba(79,156,249,0.3); color: var(--accent);
+      font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
     }
+    .step-text { font-size: 12.5px; color: var(--text-muted); line-height: 1.45; }
+    .step-text strong { color: var(--text); font-weight: 600; }
 
-    /* Feature list */
-    .feature-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .feature-list li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12.5px;
-      color: var(--text-muted);
-    }
-
-    .feature-list li .fi {
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-
-    /* Footer */
     .footer {
       padding: 10px 20px 14px;
       border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
     }
+    .footer-note { font-size: 11px; color: var(--text-muted); }
+    .footer-version { font-size: 11px; color: var(--text-muted); font-family: var(--mono); }
 
-    .footer-note {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .footer-version {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-family: var(--mono);
-    }
-
-    /* Toast notification */
     .toast {
-      position: fixed;
-      bottom: 14px;
-      left: 50%;
+      position: fixed; bottom: 14px; left: 50%;
       transform: translateX(-50%) translateY(10px);
-      background: var(--surface2);
-      color: var(--text);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
+      background: var(--surface2); color: var(--text);
+      padding: 8px 16px; border-radius: 20px;
+      font-size: 12px; font-weight: 500;
       border: 1px solid var(--border);
-      opacity: 0;
-      transition: opacity 0.2s, transform 0.2s;
-      pointer-events: none;
-      white-space: nowrap;
-      z-index: 999;
+      opacity: 0; transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none; white-space: nowrap; z-index: 999;
     }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   </style>
 </head>
 <body>
@@ -297,10 +169,13 @@
         <div class="logo-name">AI <span>Commenter</span></div>
       </div>
     </div>
-    <div class="tagline">Generate context-aware LinkedIn comments instantly</div>
-    <div class="status-badge disconnected" id="statusBadge">
-      <div class="status-dot"></div>
-      <span id="statusText">No API key set</span>
+    <div class="tagline">Select text → instant AI comment. No DOM hacks.</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;">
+      <div class="version-badge">v3 · Selection Model</div>
+      <div class="status-badge disconnected" id="statusBadge">
+        <div class="status-dot"></div>
+        <span id="statusText">No API key set</span>
+      </div>
     </div>
   </div>
 
@@ -308,18 +183,12 @@
     <div class="section">
       <div class="section-label">Anthropic API Key</div>
       <div class="input-group">
-        <input
-          type="password"
-          id="apiKeyInput"
-          placeholder="sk-ant-api03-…"
-          autocomplete="off"
-          spellcheck="false"
-        />
-        <button class="toggle-visibility" id="toggleVisibility" title="Show/hide key">👁</button>
+        <input type="password" id="apiKeyInput" placeholder="sk-ant-api03-…" autocomplete="off" spellcheck="false" />
+        <button class="toggle-visibility" id="toggleVisibility" title="Show/hide">👁</button>
       </div>
       <p class="input-hint">
         Get your key at <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com</a>.
-        Your key is stored locally and never shared.
+        Stored locally, never shared.
       </p>
       <button class="btn-save" id="saveBtn">Save API Key</button>
     </div>
@@ -327,24 +196,44 @@
     <div class="divider"></div>
 
     <div class="section">
-      <div class="section-label">Features</div>
-      <ul class="feature-list">
-        <li><span class="fi">✦</span> AI comment generation from post content</li>
-        <li><span class="fi">🌍</span> Auto-detects post language (EN, DE, FR, ES)</li>
-        <li><span class="fi">🎭</span> 5 tone presets: Insightful, Professional, Casual…</li>
-        <li><span class="fi">✏️</span> Improve & rewrite your own drafts</li>
-        <li><span class="fi">⚡</span> Works on infinite scroll — no refresh needed</li>
-      </ul>
+      <div class="section-label">How it works</div>
+      <div class="how-it-works">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Select any text</strong> on a LinkedIn post — a floating button appears instantly</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Click the button</strong>, pick your tone (Insightful, Bold, Casual…)</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Generate</strong> — comment is created and <strong>auto-copied</strong> to your clipboard</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text"><strong>Paste</strong> into the LinkedIn comment box and post</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section" style="margin-bottom:0">
+      <div class="section-label">v3 Architecture</div>
+      <p style="font-size:12px;color:var(--text-muted);line-height:1.55;">
+        Uses <code style="color:var(--accent);font-family:var(--mono);font-size:11px">window.getSelection()</code> + Shadow DOM.
+        Zero reliance on LinkedIn's class names — <strong style="color:var(--text)">immune to LinkedIn UI updates</strong>.
+      </p>
     </div>
   </div>
 
   <div class="footer">
     <span class="footer-note">Powered by Claude Sonnet</span>
-    <span class="footer-version">v1.0.0</span>
+    <span class="footer-version">v3.0.0</span>
   </div>
 
   <div class="toast" id="toast"></div>
-
   <script src="popup.js"></script>
 </body>
 </html>
